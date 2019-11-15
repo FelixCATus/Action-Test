@@ -1,0 +1,12 @@
+name: Changelog
+
+on: [pull_request]
+
+jobs:
+  add-changelog:
+    name: Add to Changelog
+    runs-on: ubuntu-latest
+    steps:
+    - uses: Sven65/Changelog-Actions@v1
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
