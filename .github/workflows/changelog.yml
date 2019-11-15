@@ -7,7 +7,11 @@ jobs:
     name: Add to Changelog
     runs-on: ubuntu-latest
     steps:
-    - uses: Sven65/Changelog-Actions@master
-      if: github.event == 'closed' && github.event.pull_request.merged == true
-      with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Add to Changelog
+        uses: Sven65/Changelog-Actions@master
+        if: github.event == 'closed' && github.event.pull_request.merged == true
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        id: add
+      - name: Echo time
+        run: echo 'Time was ${{ steps.add.outputs.time }}.'
